@@ -5,8 +5,8 @@ use App\Exception\InvalidExtraCharacters;
 use App\Interfaces\ValidateUserInterface;
 
 class ValidatePassword implements ValidateUserInterface{
-  function validate(array $data){
-    $password = $data['password'];
+  function validate(string $password){
+    
 //Ошибка здесь
     if (mb_strlen($password) < 12){
         throw new InvalidPasswordLength("Длинна пароля должна быть больше 11");

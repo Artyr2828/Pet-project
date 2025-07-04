@@ -2,5 +2,5 @@
 namespace App\Interfaces;
 
 interface ValidateUserInterface{
-   function validate(array $data);
+   function validate(string $dataValidate);
 }

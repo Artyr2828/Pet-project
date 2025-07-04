@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+  <html lang="ru">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Подтверждение email</title>
+      <style>
+          body {
+              font-family: Arial, sans-serif;
+              line-height: 1.6;
+              color: #333;
+              max-width: 600px;
+              margin: 0 auto;
+              padding: 20px;
+
+	}
+          .header {
+              text-align: center;
+              padding: 20px 0;
+              border-bottom: 1px solid #eee;
+          }
+          .logo {
+              max-width: 150px;
+          }
+          .content {
+              padding: 20px 0;
+          }
+          .code {
+              font-size: 24px;
+              font-weight: bold;
+              letter-spacing: 5px;
+              text-align: center;
+              margin: 30px 0;
+              padding: 15px;
+              background: #f5f5f5;
+              border-radius: 5px;
+              color: #2c3e50;
+          }
+          .footer {
+              text-align: center;
+              padding: 20px 0;
+              border-top: 1px solid #eee;
+              font-size: 12px;
+              color: #777;
+          }
+          .button {
+              display: inline-block;
+              padding: 10px 20px;
+              background-color: #3498db;
+              color: white;
+              text-decoration: none;
+              border-radius: 5px;
+              margin: 20px 0;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="header">
+          <h2>Подтверждение email</h2>
+      </div>
+
+      <div class="content">
+          <p>Здравствуйте!</p>
+          <p>Для завершения регистрации введите следующий код подтверждения:</p>
+
+	  <div class="code">{{code}}</div>
+
+          <p>Если вы не запрашивали этот код, просто проигнорируйте это письмо.</p>
+      </div>
+
+      <div class="footer">
+          <p>© ' . date('Y') . ' Название вашего сервиса. Все права защищены.</p>
+      </div>
+  </body>
+  </html>

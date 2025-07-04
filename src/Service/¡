@@ -4,18 +4,19 @@ use Exception;
 use App\Interfaces\ValidateUserInterface;
 use App\Exception\InvalidUserDataException;
 use App\Interfaces\RequestStructureValidatorInterface;
-use App\DTO\UserData; 
 class UserService{
+ private RequestStructureValidatorInterface $validateUser;
  private ValidateUserInterface $validatePassword;
  private ValidateUserInterface $validateEmail;
  private ValidateUserInterface $validateName;
 
- function register(UserData $user){
+ function register(array $data){
    // валидация данных
    error_log("Доходит до Service");
    //проверка есть ли вообще данные в массиве
 
    try{
+    $user = $this->validateUser->ValidateDataStructure($data, "password", "email", "name");
     $this->validatePassword->validate($user->password); 
     $this->validateEmail->validate($user->email);
     $this->validateName->validate($user->name);
@@ -24,9 +25,11 @@ class UserService{
    }
   }
 
-  function __construct(ValidateUserInterface $validatePassword, ValidateUserInterface $validateEmail, ValidateUserInterface $validateName){
+  function __construct(RequestStructureValidatorInterface $validateUser, ValidateUserInterface $validatePassword, ValidateUserInterface $validateEmail, ValidateUserInterface $validateName){
+   $this->validateUser = $validateUser;
    $this->validatePassword = $validatePassword;
    $this->validateEmail = $validateEmail;
    $this->validateName = $validateName;
   }
+
 }
